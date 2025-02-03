@@ -1,21 +1,25 @@
-// Interface Challenge
-interface Computer {
-    readonly id: number;
-    brand: string;
-    ram: number;
-    storage?: number;
-    upgradeRam(inc:number): number;
+enum UserRole {
+    Admin,
+    Manager,
+    Employee,
 }
 
-let myPC: Computer = {
-    id: 1,
-    brand: 'Dell',
-    ram: 2,
-    upgradeRam(inc){
-        return this.ram + inc;
-    }
+type User = {
+    id: number; 
+    name: string; 
+    role: UserRole;
+    contact: [string, string]; // email, phone
 }
 
-const newRam = myPC.upgradeRam(10);
+function createUser(user: User): User {
+    return user;
+}
 
-console.log(newRam)
+const user: User = createUser({
+  id: 12,
+  name: "john",
+  role: UserRole.Admin,
+  contact: ["me.com", "123"],
+})
+
+console.log(user)
